@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Área Administrativa | Golden English Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #003366, #0055AA);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-container h1 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .login-container p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .login-form input {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #003366;
+        }
+
+        .btn-login, .btn-public {
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 85, 170, 0.3);
+        }
+
+        .btn-public {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-public:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .back-to-site {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .back-to-site a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-site a:hover {
+            color: #0055AA;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 2rem;
+                margin: 10px;
+            }
+            
+            .login-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Área Administrativa</h1>
+        <p>Acesso restrito - Autenticação necessária</p>
+        
+        <form class="login-form" id="adminLoginForm">
+            <input type="text" id="username" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+        
+        <div class="back-to-site">
+            <a href="index.html">← Voltar ao Site Público</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Credenciais padrão
+            if (username === 'admin' && password === 'golden2024') {
+                // Armazenar sessão
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                alert('Credenciais inválidas!');
+            }
+        });
+    </script>
+</body>
+</html>

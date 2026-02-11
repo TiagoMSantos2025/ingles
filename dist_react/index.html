@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden English Academy - Aulas Presenciais de Inglês | Melhore seu Inglês com Profissionais Certificados</title>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="A Golden English Academy oferece aulas presenciais de inglês com professores certificados. Cursos para todos os níveis com metodologia avançada e resultados garantidos.">
+    <meta name="keywords" content="aulas de inglês, curso de inglês, inglês presencial, academia de inglês, aprender inglês, Golden English Academy">
+    <meta name="author" content="Golden English Academy">
+    
+    <!-- Open Graph tags para redes sociais -->
+    <meta property="og:title" content="Golden English Academy - Aulas Presenciais de Inglês">
+    <meta property="og:description" content="Aprenda inglês com professores certificados em aulas presenciais personalizadas para todos os níveis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.goldenenglishacademy.com.br">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Golden English Academy",
+      "description": "Academia de inglês com aulas presenciais para todos os níveis",
+      "telephone": "(11) 99999-9999",
+      "email": "contato@goldenenglish.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BR"
+      }
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav button:hover,
+        .nav button.active {
+            background: #FFD700;
+            color: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.95), rgba(0, 85, 170, 0.9)), url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            color: white;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: #f0f8ff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1.1rem 2.3rem;
+            font-size: 1.15rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #003366;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            color: #FFD700;
+            border-color: #FFD700;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+        }
+
+        .access-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .public-link, .admin-link {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .public-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .public-link:hover {
+            background: white;
+            color: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.3);
+        }
+
+        .admin-link {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            border: 2px solid #FFD700;
+        }
+
+        .admin-link:hover {
+            background: #FFD700;
+            color: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Sections */
+        .about, .courses, .gallery, .testimonials, .contact {
+            padding: 5rem 0;
+        }
+
+        .about {
+            background: #f8f9fa;
+        }
+
+        .courses {
+            background: white;
+        }
+
+        .gallery {
+            background: #e9ecef;
+        }
+
+        .news {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .testimonials {
+            background: #003366;
+            color: white;
+        }
+
+        .contact {
+            background: #f8f9fa;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.7rem;
+            margin-bottom: 3rem;
+            color: #003366;
+            position: relative;
+            padding-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            border-radius: 2px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .news-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #FFD700;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .news-date {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .news-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .news-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-news {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-news:hover {
+            background: linear-gradient(135deg, #002244, #003366);
+            transform: translateY(-2px);
+        }
+
+        .testimonials h2 {
+            color: white;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-item video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-item .caption {
+            padding: 1rem;
+            background: white;
+            text-align: center;
+        }
+
+        /* Other sections styles */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat h3 {
+            font-size: 2.8rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 700;
+        }
+
+        .stat p {
+            font-weight: 600;
+            color: #003366;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-card {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .course-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            border-radius: 1.5px;
+        }
+
+        .course-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-card li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .course-card li:before {
+            content: "✓";
+            color: #FFD700;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .btn-course {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+            border: none;
+            padding: 0.9rem 1.7rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(0, 51, 102, 0.2);
+        }
+
+        .btn-course:hover {
+            background: linear-gradient(135deg, #002244, #003366);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 51, 102, 0.3);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255,215,0,0.3);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial p:first-child {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial h4 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .testimonial .position {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item h3 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .info-item h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+        }
+
+        .info-item p {
+            color: #666;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #003366;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #002244, #003366);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo h2 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .footer-logo p {
+            color: #ccc;
+        }
+
+        .link-group h4 {
+            color: #FFD700;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .link-group h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: white;
+            border-radius: 1px;
+        }
+
+        .link-group ul {
+            list-style: none;
+        }
+
+        .link-group li {
+            padding: 0.3rem 0;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link-group li:hover {
+            color: #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .access-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Golden English Academy</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><button class="active" onclick="scrollToSection('home')">Início</button></li>
+                    <li><button onclick="scrollToSection('about')">Sobre</button></li>
+                    <li><button onclick="scrollToSection('courses')">Cursos</button></li>
+                    <li><button onclick="scrollToSection('gallery')">Galeria</button></li>
+                    <li><button onclick="scrollToSection('news')">Novidades</button></li>
+                    <li><button onclick="scrollToSection('testimonials')">Depoimentos</button></li>
+                    <li><button onclick="scrollToSection('contact')">Contato</button></li>
+                    <li><a href="blog.html" style="color: white; text-decoration: none;">Blog</a></li>
+                    <li><a href="level-test.html" style="color: white; text-decoration: none;">Teste de Nível</a></li>
+                    <li><a href="contact.html" style="color: white; text-decoration: none;">Contato</a></li>
+                    <li><a href="login.html" style="color: white; text-decoration: none;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="mainTitle">Domine o Inglês com Excelência</h1>
+                <p id="mainDescription">Transforme sua carreira e alcance novos patamares com a Golden English Academy. Aulas presenciais premium personalizadas para todos os níveis.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="openRegistration()">Matricule-se Agora</button>
+                    <button class="btn-secondary" onclick="scrollToSection('courses')">Saiba Mais</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre a Golden English Academy</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p id="aboutText">Somos uma instituição premium especializada no ensino presencial de inglês, comprometida em oferecer uma educação de excelência que transforma vidas e abre portas para oportunidades globais.</p>
+                    <p>Nossa metodologia avançada combina interação humana direta com professores altamente qualificados e certificados internacionalmente, garantindo resultados excepcionais e duradouros para nossos alunos.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>+2000</h3>
+                            <p>Alunos Formados</p>
+                        </div>
+                        <div class="stat">
+                            <h3>8 anos</h3>
+                            <p>de Excelência</p>
+                        </div>
+                        <div class="stat">
+                            <h3>98%</h3>
+                            <p>Taxa de Sucesso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2>Nossos Cursos</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>Inglês Fundamental Presencial</h3>
+                    <p>Ideal para iniciantes. Construa uma base sólida e confiante no idioma em ambiente presencial.</p>
+                    <ul>
+                        <li>Vocabulário essencial estratégico</li>
+                        <li>Gramática funcional aplicada</li>
+                        <li>Conversação prática guiada</li>
+                        <li>Aulas em pequenos grupos</li>
+                    </ul>
+                    <button class="btn-course">Detalhes do Curso</button>
+                </div>
+                <div class="course-card">
+                    <h3>Inglês Intermediário Presencial</h3>
+                    <p>Desenvolva habilidades avançadas e conquiste fluência comunicativa em aulas presenciais.</p>
+                    <ul>
+                        <li>Compreensão auditiva refinada</li>
+                        <li>Expressão oral fluida e natural</li>
+                        <li>Leitura crítica e escrita persuasiva</li>
+                        <li>Interação em grupo real</li>
+                    </ul>
+                    <button class="btn-course">Detalhes do Curso</button>
+                </div>
+                <div class="course-card">
+                    <h3>Inglês Mastery Presencial</h3>
+                    <p>Atinga a maestria linguística para contextos profissionais e acadêmicos em ambiente presencial.</p>
+                    <ul>
+                        <li>Fluência nativa-like</li>
+                        <li>Preparação intensiva para certificações</li>
+                        <li>Inglês especializado corporativo</li>
+                        <li>Networking com colegas</li>
+                    </ul>
+                    <button class="btn-course">Detalhes do Curso</button>
+                </div>
+                <div class="course-card">
+                    <h3>Preparação Premium Presencial</h3>
+                    <p>Prepare-se com excelência para TOEFL, IELTS, Cambridge e outras certificações em ambiente presencial.</p>
+                    <ul>
+                        <li>Simulados personalizados</li>
+                        <li>Estratégias avançadas de prova</li>
+                        <li>Correção especializada individualizada</li>
+                        <li>Acompanhamento presencial</li>
+                    </ul>
+                    <button class="btn-course">Detalhes do Curso</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Galeria de Fotos e Vídeos</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Confira momentos especiais de nossas aulas e eventos</p>
+            <div id="galleryGrid" class="gallery-grid">
+                <!-- Gallery items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- News/Updates Section -->
+    <section id="news" class="news">
+        <div class="container">
+            <h2>Novidades e Eventos</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">15 JAN 2024</div>
+                    <h3>Novas Turmas Iniciando em Fevereiro</h3>
+                    <p>Matrículas abertas para turmas presenciais de todos os níveis. Inscreva-se agora e garanta sua vaga!</p>
+                    <button class="btn-news" onclick="openRegistration()">Saiba Mais</button>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">10 JAN 2024</div>
+                    <h3>Workshop de Pronúncia Gratuita</h3>
+                    <p>Participe do nosso workshop gratuito de pronúncia inglesa. Dias 20 e 27 de janeiro, das 19h às 21h.</p>
+                    <button class="btn-news" onclick="scrollToSection('contact')">Inscrever-se</button>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">05 JAN 2024</div>
+                    <h3>Parceria com Universidades</h3>
+                    <p>Novos convênios com universidades internacionais. Bolsas de estudo disponíveis para nossos alunos.</p>
+                    <button class="btn-news" onclick="scrollToSection('contact')">Mais Informações</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>O Que Nossos Alunos Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"A Golden English Academy transformou minha trajetória profissional. As aulas presenciais premium abriram portas para uma promoção internacional e novas oportunidades globais!"</p>
+                    <h4>Maria Silva</h4>
+                    <p class="position">Diretora de Projetos Internacionais</p>
+                </div>
+                <div class="testimonial">
+                    <p>"A equipe de professores é excepcionalmente qualificada e dedicada. As aulas presenciais dinâmicas e personalizadas garantem aprendizado acelerado e resultados surpreendentes através da interação humana direta."</p>
+                    <h4>Carlos Oliveira</h4>
+                    <p class="position">Pesquisador Universitário</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Iniciei sem conhecimento prévio e hoje mantenho comunicação fluida em inglês em ambientes corporativos internacionais graças às aulas presenciais interativas. Uma experiência transformadora que recomendo fortemente!"</p>
+                    <h4>Ana Costa</h4>
+                    <p class="position">CEO & Empreendedora Internacional</p>
+                </div>
+                <div class="testimonial">
+                    <p>"As aulas presenciais criam um ambiente de aprendizado único. A interação direta com professores e colegas acelera significativamente o processo de aprendizagem."</p>
+                    <h4>Ricardo Mendes</h4>
+                    <p class="position">Engenheiro de Software</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Email</h3>
+                        <p>contato@goldenenglish.com.br</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Telefone</h3>
+                        <p>(11) 99999-9999</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Horário de Atendimento</h3>
+                        <p>Segunda a Sexta: 8h às 20h</p>
+                        <p>Sábado: 9h às 17h</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <input type="email" placeholder="Seu Email" required>
+                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Golden English Academy</h2>
+                    <p>Aprendizado que transforma vidas</p>
+                </div>
+                <div class="link-group">
+                    <h4>Cursos</h4>
+                    <ul>
+                        <li>Inglês Básico</li>
+                        <li>Inglês Intermediário</li>
+                        <li>Inglês Avançado</li>
+                        <li>Preparatórios</li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Instituição</h4>
+                    <ul>
+                        <li>Sobre Nós</li>
+                        <li>Professores</li>
+                        <li>Metodologia</li>
+                        <li>Depoimentos</li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="level-test.html">Teste de Nível</a></li>
+                        <li><a href="login.html">Área do Professor</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                        <li>FAQ</li>
+                        <li>Políticas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Golden English Academy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Load saved content
+        function loadSavedContent() {
+            const savedContent = localStorage.getItem('siteContent');
+            if (savedContent) {
+                const content = JSON.parse(savedContent);
+                if (content.title) document.getElementById('mainTitle').textContent = content.title;
+                if (content.description) document.getElementById('mainDescription').textContent = content.description;
+                if (content.about) document.getElementById('aboutText').textContent = content.about;
+            }
+        }
+
+        // Load gallery
+        function loadGallery() {
+            const savedGallery = localStorage.getItem('galleryItems');
+            const galleryGrid = document.getElementById('galleryGrid');
+            
+            if (savedGallery) {
+                const items = JSON.parse(savedGallery);
+                galleryGrid.innerHTML = '';
+                
+                items.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item';
+                    div.innerHTML = `
+                        ${item.type === 'image' ? 
+                            `<img src="${item.url}" alt="${item.name}" loading="lazy">` :
+                            `<video src="${item.url}" controls loading="lazy"></video>`
+                        }
+                        <div class="caption">${item.name}</div>
+                    `;
+                    galleryGrid.appendChild(div);
+                });
+            } else {
+                // Default gallery items
+                galleryGrid.innerHTML = `
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Aula em grupo" loading="lazy">
+                        <div class="caption">Aulas Interativas</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1548212630-5310b066e0d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Professor ensinando" loading="lazy">
+                        <div class="caption">Nossos Professores</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Evento da academia" loading="lazy">
+                        <div class="caption">Eventos Especiais</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sala de aula moderna" loading="lazy">
+                        <div class="caption">Nossa Infraestrutura</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Registration function
+        function openRegistration() {
+            alert('🎉 Matrículas abertas! Entre em contato conosco:\n\n📧 Email: matricula@goldenenglish.com.br\n📞 Telefone: (11) 99999-9999\n\nOu preencha o formulário de contato abaixo!');
+            setTimeout(() => {
+                scrollToSection('contact');
+            }, 100);
+        }
+
+        // Form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const name = e.target.querySelector('input[type="text"]').value;
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            // Simulate form submission
+            alert(`✅ Obrigado, ${name}!\n\nRecebemos sua mensagem e entraremos em contato em breve no email: ${email}\n\nEnquanto isso, aproveite para conhecer nossos cursos!`);
+            
+            // Reset form
+            e.target.reset();
+        }
+
+        // Course button functionality
+        function showCourseDetails(courseName) {
+            const courseInfo = {
+                'Inglês Fundamental Presencial': 'Curso ideal para iniciantes. Construa uma base sólida com vocabulário essencial, gramática funcional e conversação prática guiada em pequenos grupos.',
+                'Inglês Intermediário Presencial': 'Desenvolva habilidades avançadas com compreensão auditiva refinada, expressão oral fluida e leitura crítica em ambiente presencial.',
+                'Inglês Mastery Presencial': 'Atinga a maestria linguística para contextos profissionais e acadêmicos com fluência nativa-like e preparação intensiva.',
+                'Preparação Premium Presencial': 'Prepare-se com excelência para certificações internacionais com simulados personalizados e acompanhamento presencial.'
+            };
+            
+            alert(`📘 ${courseName}\n\n${courseInfo[courseName] || 'Informações detalhadas disponíveis mediante contato.'}\n\nInteressado? Entre em contato conosco!`);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedContent();
+            loadGallery();
+            
+            // Add event listeners
+            document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
+            
+            // Add click events to course buttons
+            document.querySelectorAll('.btn-course').forEach((button, index) => {
+                const courses = [
+                    'Inglês Fundamental Presencial',
+                    'Inglês Intermediário Presencial', 
+                    'Inglês Mastery Presencial',
+                    'Preparação Premium Presencial'
+                ];
+                button.addEventListener('click', () => showCourseDetails(courses[index]));
+            });
+        });
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <!-- End Google Analytics -->
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Golden English Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .admin-header div {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-public-nav, .btn-logout {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-public-nav {
+            background: white;
+            color: #003366;
+        }
+
+        .btn-public-nav:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .btn-logout {
+            background: #FFD700;
+            color: #003366;
+        }
+
+        .btn-logout:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+        }
+
+        .admin-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 0;
+        }
+
+        .management-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .management-section h2 {
+            color: #003366;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 0.5rem;
+        }
+
+        .add-student-form {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .add-student-form h3 {
+            color: #003366;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-row input,
+        .form-row select {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-row input:focus,
+        .form-row select:focus {
+            outline: none;
+            border-color: #003366;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .students-table {
+            overflow-x: auto;
+        }
+
+        .students-table h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #003366;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status.ativo {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.pendente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .btn-remove {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-remove:hover {
+            background: #c82333;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .admin-header div {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <header class="admin-header">
+            <h1>Painel Administrativo - Golden English Academy</h1>
+            <div>
+                <button onclick="location.href='index.html'" class="btn-public-nav">🏠 Site Público</button>
+                <button onclick="logout()" class="btn-logout">Sair</button>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>Total de Alunos</h3>
+                    <p class="stat-number">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Alunos Ativos</h3>
+                    <p class="stat-number">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Alunos Pendentes</h3>
+                    <p class="stat-number">0</p>
+                </div>
+            </div>
+
+            <div class="management-section">
+                <h2>Gerenciamento de Alunos</h2>
+                
+                <div class="add-student-form">
+                    <h3>Adicionar Novo Aluno</h3>
+                    <div class="form-row">
+                        <input type="text" id="studentName" placeholder="Nome do Aluno">
+                        <input type="email" id="studentEmail" placeholder="Email">
+                        <select id="studentCourse">
+                            <option value="">Selecione o Curso</option>
+                            <option value="Inglês Básico">Inglês Básico</option>
+                            <option value="Inglês Intermediário">Inglês Intermediário</option>
+                            <option value="Inglês Avançado">Inglês Avançado</option>
+                            <option value="Preparatório">Preparatório</option>
+                        </select>
+                        <button onclick="addStudent()" class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+
+                <div class="students-table">
+                    <h3>Lista de Alunos</h3>
+                    <table id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Curso</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Students will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        // Sample students data
+        let students = [
+            { id: 1, name: 'Maria Silva', email: 'maria@email.com', course: 'Inglês Intermediário', status: 'Ativo' },
+            { id: 2, name: 'Carlos Oliveira', email: 'carlos@email.com', course: 'Inglês Avançado', status: 'Ativo' },
+            { id: 3, name: 'Ana Costa', email: 'ana@email.com', course: 'Inglês Básico', status: 'Pendente' }
+        ];
+
+        // Display students
+        function renderStudents() {
+            const tbody = document.querySelector('#studentsTable tbody');
+            tbody.innerHTML = '';
+
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.email}</td>
+                    <td>${student.course}</td>
+                    <td>
+                        <span class="status ${student.status.toLowerCase()}">
+                            ${student.status}
+                        </span>
+                    </td>
+                    <td>
+                        <button onclick="removeStudent(${student.id})" class="btn-remove">
+                            Remover
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Update stats
+            document.querySelector('.stat-number:nth-child(2)').textContent = students.length;
+            document.querySelector('.stat-number:nth-child(4)').textContent = students.filter(s => s.status === 'Ativo').length;
+            document.querySelector('.stat-number:nth-child(6)').textContent = students.filter(s => s.status === 'Pendente').length;
+        }
+
+        // Add new student
+        function addStudent() {
+            const name = document.getElementById('studentName').value;
+            const email = document.getElementById('studentEmail').value;
+            const course = document.getElementById('studentCourse').value;
+
+            if (name && email && course) {
+                const newStudent = {
+                    id: students.length + 1,
+                    name: name,
+                    email: email,
+                    course: course,
+                    status: 'Ativo'
+                };
+
+                students.push(newStudent);
+                renderStudents();
+
+                // Clear form
+                document.getElementById('studentName').value = '';
+                document.getElementById('studentEmail').value = '';
+                document.getElementById('studentCourse').value = '';
+            } else {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        }
+
+        // Remove student
+        function removeStudent(id) {
+            if (confirm('Tem certeza que deseja remover este aluno?')) {
+                students = students.filter(student => student.id !== id);
+                renderStudents();
+            }
+        }
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        // Initial render
+        renderStudents();
+    </script>
+</body>
+</html>

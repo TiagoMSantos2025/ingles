@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Dicas de Inglês | Golden English Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 85, 170, 0.8)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .blog-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            background: linear-gradient(135deg, #002244, #003366);
+            transform: translateY(-2px);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .page-btn {
+            padding: 0.8rem 1.2rem;
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover {
+            background: #0055AA;
+        }
+
+        .page-btn.active {
+            background: #FFD700;
+            color: #003366;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #002244, #003366);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Golden English Academy</h1>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#courses">Cursos</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Dicas e Artigos de Inglês</h2>
+            <p>Descubra dicas valiosas para melhorar seu inglês e acompanhe as últimas tendências no aprendizado do idioma</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="blog-grid" id="blogPosts">
+            <!-- Blog posts will be populated by JavaScript -->
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Golden English Academy</h3>
+                    <p>Aprendizado que transforma vidas</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Cursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inglês Básico</a></li>
+                        <li><a href="#">Inglês Intermediário</a></li>
+                        <li><a href="#">Inglês Avançado</a></li>
+                        <li><a href="#">Preparatórios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="level-test.html">Teste de Nível</a></li>
+                        <li><a href="login.html">Área do Professor</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Golden English Academy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample blog posts data
+        const blogPosts = [
+            {
+                id: 1,
+                title: "10 Dicas para Melhorar seu Vocabulário em Inglês",
+                excerpt: "Aprenda estratégias práticas para expandir seu vocabulário e lembrar palavras novas de forma eficiente.",
+                date: "15 JAN 2024",
+                image: "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 2,
+                title: "Como Superar a Timidez ao Falar Inglês",
+                excerpt: "Técnicas psicológicas e práticas para ganhar confiança e se expressar fluentemente em inglês.",
+                date: "10 JAN 2024",
+                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3,
+                title: "Os Benefícios de Aprender Inglês com Professores Nativos",
+                excerpt: "Entenda como as aulas com professores nativos podem acelerar seu aprendizado de inglês.",
+                date: "05 JAN 2024",
+                image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4,
+                title: "Guia Completo para Escolher o Nível Certo de Inglês",
+                excerpt: "Como identificar seu nível atual e escolher o curso mais adequado para seu perfil.",
+                date: "01 JAN 2024",
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5,
+                title: "Como Aprender Inglês Assistindo Séries e Filmes",
+                excerpt: "Métodos eficazes para usar entretenimento como ferramenta de aprendizado de inglês.",
+                date: "28 DEC 2023",
+                image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6,
+                title: "Erros Comuns de Pronúncia e Como Evitá-los",
+                excerpt: "Identifique os erros mais frequentes e aprenda a pronunciar corretamente em inglês.",
+                date: "25 DEC 2023",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        function displayBlogPosts(posts) {
+            const container = document.getElementById('blogPosts');
+            container.innerHTML = '';
+
+            posts.forEach(post => {
+                const blogCard = document.createElement('div');
+                blogCard.className = 'blog-card';
+                blogCard.innerHTML = `
+                    <div class="blog-image" style="background-image: url('${post.image}')"></div>
+                    <div class="blog-content">
+                        <span class="blog-date">${post.date}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <a href="#" class="read-more">Ler Mais</a>
+                    </div>
+                `;
+                container.appendChild(blogCard);
+            });
+        }
+
+        // Display the blog posts
+        displayBlogPosts(blogPosts);
+    </script>
+</body>
+</html>
