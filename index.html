@@ -121,8 +121,57 @@
 
         .header .container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Logo Container Styles */
+        .logo-container {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .logo-background {
+            background: linear-gradient(135deg, #ffd700, #ffb700);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 
+                0 8px 25px rgba(255, 215, 0, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        .main-logo {
+            color: #1a1a2e;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+        }
+
+        @keyframes logoPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* Navigation Styles */
+        .nav {
+            width: 100%;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .logo h1 {
@@ -1315,8 +1364,10 @@
     <!-- Header/Navigation -->
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <h1>Golden English Academy</h1>
+            <div class="logo-container">
+                <div class="logo-background">
+                    <h1 class="main-logo">Golden English Academy</h1>
+                </div>
             </div>
             <nav class="nav">
                 <ul>
@@ -1330,7 +1381,6 @@
                     <li><a href="blog.html" style="color: white; text-decoration: none;">Blog</a></li>
                     <li><a href="level-test.html" style="color: white; text-decoration: none;">Teste de Nível</a></li>
                     <li><a href="contact.html" style="color: white; text-decoration: none;">Contato</a></li>
-                    <li><a href="login.html" style="color: white; text-decoration: none;">Admin</a></li>
                 </ul>
             </nav>
         </div>
@@ -1558,7 +1608,6 @@
                     <ul>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="level-test.html">Teste de Nível</a></li>
-                        <li><a href="login.html">Área do Professor</a></li>
                         <li><a href="#contact">Contato</a></li>
                         <li>FAQ</li>
                         <li>Políticas</li>

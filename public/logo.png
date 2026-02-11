@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#1a1a2e" stroke="#FFD700" stroke-width="5"/>
+  
+  <!-- Book icon -->
+  <rect x="60" y="60" width="80" height="80" rx="5" fill="#FFD700"/>
+  <rect x="65" y="65" width="70" height="10" fill="#1a1a2e"/>
+  <rect x="65" y="85" width="70" height="5" fill="#1a1a2e" opacity="0.7"/>
+  <rect x="65" y="95" width="70" height="5" fill="#1a1a2e" opacity="0.7"/>
+  <rect x="65" y="105" width="70" height="5" fill="#1a1a2e" opacity="0.7"/>
+  
+  <!-- Graduation cap -->
+  <polygon points="100,40 130,55 100,70 70,55" fill="#FFD700"/>
+  <rect x="90" y="70" width="20" height="15" fill="#1a1a2e"/>
+  
+  <!-- Letter "G" -->
+  <text x="100" y="135" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#1a1a2e" text-anchor="middle">G</text>
+</svg>
