@@ -6,19 +6,25 @@ function App() {
   const [darkMode, setDarkMode] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Efeito de parallax para o banner
+  // Criar partículas animadas
   useEffect(() => {
-    const handleScroll = () => {
-      const banner = document.querySelector('.banner-image')
-      if (banner) {
-        const scrolled = window.pageYOffset
-        const rate = scrolled * -0.5
-        banner.style.transform = `translateY(${rate}px)`
+    const createParticles = () => {
+      const particlesContainer = document.querySelector('.particles')
+      if (!particlesContainer) return
+      
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div')
+        particle.className = 'particle'
+        particle.style.left = `${Math.random() * 100}%`
+        particle.style.width = `${Math.random() * 10 + 2}px`
+        particle.style.height = particle.style.width
+        particle.style.animationDelay = `${Math.random() * 15}s`
+        particle.style.animationDuration = `${15 + Math.random() * 10}s`
+        particlesContainer.appendChild(particle)
       }
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    
+    createParticles()
   }, [])
 
   // Simular carregamento inicial
@@ -147,17 +153,20 @@ function App() {
         </div>
       </header>
       
+      {/* Partículas animadas */}
+      <div className="particles"></div>
+      
       {/* Top Banner with Hero Content */}
-      <div className="top-banner parallax-effect">
+      <div className="top-banner parallax-effect gradient-bg">
         <img src="/imagen5.png" alt="Golden English Academy Banner" className="banner-image" loading="eager" />
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="container">
             <div className="hero-content">
-              <h1 id="hero-title" className="typewriter">Domine o Inglês com Excelência</h1>
+              <h1 id="hero-title" className="typewriter neon-border">Domine o Inglês com Excelência</h1>
               <p>Transforme sua carreira e alcance novos patamares com a Golden English Academy. Aulas presenciais premium personalizadas para todos os níveis.</p>
               <div className="cta-buttons">
-                <button className="btn-primary btn-ripple hover-lift">Matricule-se Agora</button>
-                <button className="btn-secondary btn-ripple hover-lift">Saiba Mais</button>
+                <button className="btn-primary btn-ripple hover-lift neon-border">Matricule-se Agora</button>
+                <button className="btn-secondary btn-ripple hover-lift neon-border">Saiba Mais</button>
               </div>
             </div>
           </div>
