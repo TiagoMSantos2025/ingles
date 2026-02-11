@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Golden English Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Golden English Academy">
+                <h1>Golden English Academy</h1>
+            </div>
+            <nav>
+                <a href="index.html"><i class="fas fa-home"></i> Site Principal</a>
+                <button onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="container">
+            <h1>Painel Administrativo</h1>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Total de Alunos</h3>
+                    <span id="total-students">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Professores Ativos</h3>
+                    <span id="active-teachers">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Aulas Hoje</h3>
+                    <span id="classes-today">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Receita Mensal</h3>
+                    <span id="monthly-revenue">R$ 0,00</span>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Ações Rápidas</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="openModal('student-modal')">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Adicionar Aluno</span>
+                    </button>
+                    <button class="action-btn" onclick="openModal('teacher-modal')">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Adicionar Professor</span>
+                    </button>
+                    <button class="action-btn" onclick="openModal('class-modal')">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Agendar Aula</span>
+                    </button>
+                    <button class="action-btn" onclick="openModal('payment-modal')">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Registrar Pagamento</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h2>Atividades Recentes</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <i class="fas fa-user-plus activity-icon"></i>
+                        <div class="activity-content">
+                            <p><strong>Maria Silva</strong> se inscreveu no curso Básico</p>
+                            <small>Há 2 horas</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-calendar-check activity-icon"></i>
+                        <div class="activity-content">
+                            <p>Aula de <strong>João Santos</strong> com Prof. Ana foi concluída</p>
+                            <small>Há 3 horas</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-money-bill-wave activity-icon"></i>
+                        <div class="activity-content">
+                            <p>Pagamento de <strong>Carlos Oliveira</strong> confirmado</p>
+                            <small>Há 5 horas</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Student Modal -->
+    <div id="student-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('student-modal')">&times;</span>
+            <h2>Adicionar Novo Aluno</h2>
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-name">Nome Completo:</label>
+                    <input type="text" id="student-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-email">Email:</label>
+                    <input type="email" id="student-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-phone">Telefone:</label>
+                    <input type="tel" id="student-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-level">Nível de Inglês:</label>
+                    <select id="student-level" required>
+                        <option value="">Selecione...</option>
+                        <option value="beginner">Iniciante</option>
+                        <option value="intermediate">Intermediário</option>
+                        <option value="advanced">Avançado</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Cadastrar Aluno</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Teacher Modal -->
+    <div id="teacher-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('teacher-modal')">&times;</span>
+            <h2>Adicionar Novo Professor</h2>
+            <form id="teacher-form">
+                <div class="form-group">
+                    <label for="teacher-name">Nome Completo:</label>
+                    <input type="text" id="teacher-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacher-email">Email:</label>
+                    <input type="email" id="teacher-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacher-specialty">Especialidade:</label>
+                    <input type="text" id="teacher-specialty" placeholder="Ex: Conversação, Gramática, Negócios" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacher-experience">Anos de Experiência:</label>
+                    <input type="number" id="teacher-experience" min="0" required>
+                </div>
+                <button type="submit" class="btn-primary">Cadastrar Professor</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Class Modal -->
+    <div id="class-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('class-modal')">&times;</span>
+            <h2>Agendar Nova Aula</h2>
+            <form id="class-form">
+                <div class="form-group">
+                    <label for="class-student">Aluno:</label>
+                    <select id="class-student" required>
+                        <option value="">Selecione um aluno...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="class-teacher">Professor:</label>
+                    <select id="class-teacher" required>
+                        <option value="">Selecione um professor...</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="class-date">Data:</label>
+                        <input type="date" id="class-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-time">Horário:</label>
+                        <input type="time" id="class-time" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="class-type">Tipo de Aula:</label>
+                    <select id="class-type" required>
+                        <option value="">Selecione...</option>
+                        <option value="individual">Individual</option>
+                        <option value="group">Grupo</option>
+                        <option value="conversation">Conversação</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Agendar Aula</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('payment-modal')">&times;</span>
+            <h2>Registrar Pagamento</h2>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="payment-student">Aluno:</label>
+                    <select id="payment-student" required>
+                        <option value="">Selecione um aluno...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="payment-amount">Valor (R$):</label>
+                    <input type="number" id="payment-amount" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Método de Pagamento:</label>
+                    <select id="payment-method" required>
+                        <option value="">Selecione...</option>
+                        <option value="credit">Cartão de Crédito</option>
+                        <option value="debit">Cartão de Débito</option>
+                        <option value="pix">PIX</option>
+                        <option value="cash">Dinheiro</option>
+                        <option value="transfer">Transferência Bancária</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="payment-description">Descrição:</label>
+                    <textarea id="payment-description" placeholder="Descrição do pagamento..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Registrar Pagamento</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Admin Dashboard Functions
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminStats();
+            loadStudentSelects();
+            loadTeacherSelects();
+            
+            // Form submissions
+            document.getElementById('student-form').addEventListener('submit', handleStudentSubmit);
+            document.getElementById('teacher-form').addEventListener('submit', handleTeacherSubmit);
+            document.getElementById('class-form').addEventListener('submit', handleClassSubmit);
+            document.getElementById('payment-form').addEventListener('submit', handlePaymentSubmit);
+        });
+
+        function loadAdminStats() {
+            // Mock data - in real app, fetch from API
+            document.getElementById('total-students').textContent = '127';
+            document.getElementById('active-teachers').textContent = '8';
+            document.getElementById('classes-today').textContent = '15';
+            document.getElementById('monthly-revenue').textContent = 'R$ 12.500,00';
+        }
+
+        function loadStudentSelects() {
+            const studentSelects = document.querySelectorAll('#class-student, #payment-student');
+            // Mock students data
+            const students = [
+                { id: 1, name: 'Maria Silva' },
+                { id: 2, name: 'João Santos' },
+                { id: 3, name: 'Carlos Oliveira' },
+                { id: 4, name: 'Ana Paula Costa' }
+            ];
+            
+            studentSelects.forEach(select => {
+                students.forEach(student => {
+                    const option = document.createElement('option');
+                    option.value = student.id;
+                    option.textContent = student.name;
+                    select.appendChild(option);
+                });
+            });
+        }
+
+        function loadTeacherSelects() {
+            const teacherSelect = document.getElementById('class-teacher');
+            // Mock teachers data
+            const teachers = [
+                { id: 1, name: 'Prof. Ana Clara' },
+                { id: 2, name: 'Prof. Roberto Mendes' },
+                { id: 3, name: 'Prof. Juliana Torres' }
+            ];
+            
+            teachers.forEach(teacher => {
+                const option = document.createElement('option');
+                option.value = teacher.id;
+                option.textContent = teacher.name;
+                teacherSelect.appendChild(option);
+            });
+        }
+
+        function handleStudentSubmit(e) {
+            e.preventDefault();
+            alert('Aluno cadastrado com sucesso!');
+            closeModal('student-modal');
+            document.getElementById('student-form').reset();
+        }
+
+        function handleTeacherSubmit(e) {
+            e.preventDefault();
+            alert('Professor cadastrado com sucesso!');
+            closeModal('teacher-modal');
+            document.getElementById('teacher-form').reset();
+        }
+
+        function handleClassSubmit(e) {
+            e.preventDefault();
+            alert('Aula agendada com sucesso!');
+            closeModal('class-modal');
+            document.getElementById('class-form').reset();
+        }
+
+        function handlePaymentSubmit(e) {
+            e.preventDefault();
+            alert('Pagamento registrado com sucesso!');
+            closeModal('payment-modal');
+            document.getElementById('payment-form').reset();
+        }
+
+        function logout() {
+            if(confirm('Tem certeza que deseja sair?')) {
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

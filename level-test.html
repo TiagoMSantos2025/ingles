@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Nível de Inglês - Golden English Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #FFD700;
+            font-size: 1.1rem;
+        }
+
+        .test-container {
+            padding: 2rem;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .question h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #e9f7fe;
+            border-color: #007bff;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #003366, #0055AA);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #002244, #003366);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            color: #003366;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .result-description {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #003366, #0055AA);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .test-container {
+                padding: 1rem;
+            }
+            
+            .question {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Teste de Nível de Inglês</h1>
+            <p>Descubra seu nível atual e encontre o curso ideal para você</p>
+        </div>
+        
+        <div class="test-container" id="testContainer">
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+            
+            <div id="questionsContainer">
+                <!-- Questions will be populated by JavaScript -->
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">Anterior</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Próxima</button>
+            </div>
+        </div>
+        
+        <div class="results" id="resultsContainer">
+            <h2>Resultado do seu teste</h2>
+            <div class="result-score" id="resultScore">0/0</div>
+            <div class="result-description" id="resultDescription"></div>
+            <button class="btn btn-primary" onclick="location.href='index.html'">Ver nossos cursos</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample questions for the English level test
+        const questions = [
+            {
+                question: "Choose the correct sentence:",
+                options: [
+                    "She don't like apples",
+                    "She doesn't likes apples",
+                    "She doesn't like apples",
+                    "She not like apples"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is the past tense of 'go'?",
+                options: [
+                    "went",
+                    "goed",
+                    "gone",
+                    "going"
+                ],
+                correct: 0
+            },
+            {
+                question: "Complete: 'I ___ studying English for 2 years.'",
+                options: [
+                    "was",
+                    "am",
+                    "have been",
+                    "will be"
+                ],
+                correct: 2
+            },
+            {
+                question: "Which word is a synonym for 'difficult'?",
+                options: [
+                    "easy",
+                    "hard",
+                    "simple",
+                    "light"
+                ],
+                correct: 1
+            },
+            {
+                question: "Choose the correct preposition: 'I am interested ___ learning English.'",
+                options: [
+                    "on",
+                    "at",
+                    "to",
+                    "in"
+                ],
+                correct: 3
+            },
+            {
+                question: "What does 'fluency' mean?",
+                options: [
+                    "Ability to speak smoothly and easily",
+                    "Ability to read fast",
+                    "Ability to write well",
+                    "Ability to listen carefully"
+                ],
+                correct: 0
+            },
+            {
+                question: "Choose the correct conditional: 'If I ___ rich, I would travel the world.'",
+                options: [
+                    "was",
+                    "were",
+                    "am",
+                    "will be"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the opposite of 'begin'?",
+                options: [
+                    "continue",
+                    "stop",
+                    "finish",
+                    "start"
+                ],
+                correct: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+
+        function loadQuestion(questionIndex) {
+            const container = document.getElementById('questionsContainer');
+            const question = questions[questionIndex];
+            
+            let optionsHTML = '';
+            question.options.forEach((option, index) => {
+                const isChecked = userAnswers[questionIndex] === index;
+                optionsHTML += `
+                    <label class="option">
+                        <input type="radio" name="question${questionIndex}" value="${index}" 
+                            ${isChecked ? 'checked' : ''} onchange="selectOption(${questionIndex}, ${index})">
+                        ${option}
+                    </label>
+                `;
+            });
+            
+            container.innerHTML = `
+                <div class="question">
+                    <h3>${questionIndex + 1}. ${question.question}</h3>
+                    <div class="options">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+            
+            updateNavigationButtons();
+            updateProgressBar();
+        }
+
+        function selectOption(questionIndex, optionIndex) {
+            userAnswers[questionIndex] = optionIndex;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            } else {
+                calculateResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Finalizar Teste' : 'Próxima';
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        function calculateResults() {
+            let score = 0;
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] !== null && userAnswers[i] === questions[i].correct) {
+                    score++;
+                }
+            }
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            let level, description;
+            
+            if (percentage >= 80) {
+                level = "Avançado";
+                description = "Parabéns! Você demonstra um excelente domínio do idioma. Nossos cursos avançados irão aprimorar ainda mais suas habilidades.";
+            } else if (percentage >= 60) {
+                level = "Intermediário";
+                description = "Você possui conhecimentos sólidos em inglês. Nossos cursos intermediários irão aprofundar seu conhecimento e melhorar sua fluência.";
+            } else if (percentage >= 40) {
+                level = "Básico";
+                description = "Você tem conhecimentos básicos em inglês. Nossos cursos básicos irão construir uma base sólida para seu aprendizado.";
+            } else {
+                level = "Iniciante";
+                description = "Você está começando com o inglês. Nossos cursos para iniciantes irão introduzir gradualmente o idioma de forma eficiente.";
+            }
+            
+            document.getElementById('resultScore').textContent = `${score}/${questions.length} (${percentage}%) - ${level}`;
+            document.getElementById('resultDescription').innerHTML = `
+                <p>${description}</p>
+                <p>Com base em seu resultado, recomendamos o seguinte:</p>
+                <p><strong>Curso Ideal:</strong> ${level} ${level === 'Iniciante' || level === 'Básico' ? 'ou Pré-Iniciante' : ''}</p>
+            `;
+            
+            document.getElementById('testContainer').style.display = 'none';
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+
+        // Initialize the test
+        loadQuestion(currentQuestion);
+    </script>
+</body>
+</html>
