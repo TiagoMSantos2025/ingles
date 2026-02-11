@@ -3,6 +3,37 @@ import './App.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
+  const [darkMode, setDarkMode] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Efeito de parallax para o banner
+  useEffect(() => {
+    const handleScroll = () => {
+      const banner = document.querySelector('.banner-image')
+      if (banner) {
+        const scrolled = window.pageYOffset
+        const rate = scrolled * -0.5
+        banner.style.transform = `translateY(${rate}px)`
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Simular carregamento inicial
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Toggle modo escuro
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+    document.body.classList.toggle('dark-mode')
+  }
 
 
   const scrollToSection = (sectionId) => {
@@ -41,7 +72,23 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
+      {/* Botão de tema */}
+      <button 
+        className="theme-toggle" 
+        onClick={toggleDarkMode}
+        aria-label="Alternar modo claro/escuro"
+        title="Alternar tema"
+      >
+        {darkMode ? '☀️' : '🌙'}
+      </button>
+
+      {/* Loading skeleton */}
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="skeleton-loader" style={{width: '200px', height: '200px', margin: 'auto'}}></div>
+        </div>
+      )}
       {/* Header/Navegação */}
       <header className="header" role="banner">
         <div className="container">
@@ -101,16 +148,16 @@ function App() {
       </header>
       
       {/* Top Banner with Hero Content */}
-      <div className="top-banner">
+      <div className="top-banner parallax-effect">
         <img src="/imagen5.png" alt="Golden English Academy Banner" className="banner-image" loading="eager" />
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="container">
             <div className="hero-content">
-              <h1 id="hero-title">Domine o Inglês com Excelência</h1>
+              <h1 id="hero-title" className="typewriter">Domine o Inglês com Excelência</h1>
               <p>Transforme sua carreira e alcance novos patamares com a Golden English Academy. Aulas presenciais premium personalizadas para todos os níveis.</p>
               <div className="cta-buttons">
-                <button className="btn-primary">Matricule-se Agora</button>
-                <button className="btn-secondary">Saiba Mais</button>
+                <button className="btn-primary btn-ripple hover-lift">Matricule-se Agora</button>
+                <button className="btn-secondary btn-ripple hover-lift">Saiba Mais</button>
               </div>
             </div>
           </div>
@@ -149,7 +196,7 @@ function App() {
         <div className="container">
           <h2 id="courses-title">Nossos Cursos</h2>
           <div className="courses-grid">
-            <div className="course-card slide-up" role="article" aria-labelledby="curso-fundamental">
+            <div className="course-card slide-up card-3d hover-lift" role="article" aria-labelledby="curso-fundamental">
               <h3 id="curso-fundamental">Inglês Fundamental Presencial</h3>
               <p>Ideal para iniciantes. Construa uma base sólida e confiante no idioma em ambiente presencial.</p>
               <ul>
@@ -158,9 +205,9 @@ function App() {
                 <li>Conversação prática guiada</li>
                 <li>Aulas em pequenos grupos</li>
               </ul>
-              <button className="btn-course">Detalhes do Curso</button>
+              <button className="btn-course btn-ripple">Detalhes do Curso</button>
             </div>
-            <div className="course-card slide-up" role="article" aria-labelledby="curso-intermediario">
+            <div className="course-card slide-up card-3d hover-lift" role="article" aria-labelledby="curso-intermediario">
               <h3 id="curso-intermediario">Inglês Intermediário Presencial</h3>
               <p>Desenvolva habilidades avançadas e conquiste fluência comunicativa em aulas presenciais.</p>
               <ul>
@@ -169,9 +216,9 @@ function App() {
                 <li>Leitura crítica e escrita persuasiva</li>
                 <li>Interação em grupo real</li>
               </ul>
-              <button className="btn-course">Detalhes do Curso</button>
+              <button className="btn-course btn-ripple">Detalhes do Curso</button>
             </div>
-            <div className="course-card slide-up" role="article" aria-labelledby="curso-mastery">
+            <div className="course-card slide-up card-3d hover-lift" role="article" aria-labelledby="curso-mastery">
               <h3 id="curso-mastery">Inglês Mastery Presencial</h3>
               <p>Atinga a maestria linguística para contextos profissionais e acadêmicos em ambiente presencial.</p>
               <ul>
@@ -180,9 +227,9 @@ function App() {
                 <li>Inglês especializado corporativo</li>
                 <li>Networking com colegas</li>
               </ul>
-              <button className="btn-course">Detalhes do Curso</button>
+              <button className="btn-course btn-ripple">Detalhes do Curso</button>
             </div>
-            <div className="course-card slide-up" role="article" aria-labelledby="curso-preparacao">
+            <div className="course-card slide-up card-3d hover-lift" role="article" aria-labelledby="curso-preparacao">
               <h3 id="curso-preparacao">Preparação Premium Presencial</h3>
               <p>Prepare-se com excelência para TOEFL, IELTS, Cambridge e outras certificações em ambiente presencial.</p>
               <ul>
@@ -191,7 +238,7 @@ function App() {
                 <li>Correção especializada individualizada</li>
                 <li>Acompanhamento presencial</li>
               </ul>
-              <button className="btn-course">Detalhes do Curso</button>
+              <button className="btn-course btn-ripple">Detalhes do Curso</button>
             </div>
           </div>
         </div>

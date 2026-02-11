@@ -50,6 +50,8 @@ body {
   /* Otimização de qualidade */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
 }
 
 /* Fade effect overlay */
@@ -60,9 +62,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 51, 102, 0.7), rgba(0, 85, 170, 0.7));
+  background: linear-gradient(135deg, 
+    rgba(0, 51, 102, 0.85) 0%, 
+    rgba(0, 85, 170, 0.7) 50%, 
+    rgba(26, 115, 232, 0.6) 100%);
   z-index: 2;
   pointer-events: none;
+  backdrop-filter: blur(2px);
 }
 
 /* Hero Content Over Banner */
@@ -146,10 +152,16 @@ body {
 .hero-content h1 {
   font-size: 3.8rem;
   margin-bottom: 1.5rem;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
   color: white;
   letter-spacing: 1px;
-  font-weight: 700;
+  font-weight: 800;
+  background: linear-gradient(45deg, #ffffff, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  animation: textShine 3s ease-in-out infinite;
 }
 
 .hero-content p {
@@ -192,8 +204,9 @@ body {
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #FFA500, #FF8C00);
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .btn-primary::after {
@@ -220,11 +233,13 @@ body {
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.25);
   color: #FFD700;
   border-color: #FFD700;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* Sections */
@@ -971,6 +986,21 @@ tr:hover {
   }
 }
 
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #003366, #0055AA);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.5s ease-in;
+}
+
 /* Animações para melhor experiência do usuário */
 .fade-in {
   animation: fadeIn 0.6s ease-in;
@@ -988,6 +1018,85 @@ tr:hover {
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animação de brilho no título */
+@keyframes textShine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Efeito parallax no banner */
+.parallax-effect {
+  transform: translateZ(-1px) scale(1.1);
+  transition: transform 0.1s ease-out;
+}
+
+/* Efeitos de hover avançados */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading skeleton para melhor UX */
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Micro-interações nos botões */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Efeito de digitação no hero */
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }
 
 /* Melhorias de acessibilidade */
@@ -1016,6 +1125,46 @@ skip-link {
 
 skip-link:focus {
   top: 6px;
+}
+
+/* Modo escuro opcional */
+.dark-mode {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent: #FFD700;
+}
+
+/* Toggle theme button */
+.theme-toggle {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 1001;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+/* Efeitos 3D nos cards */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
 }
 
 /* Responsive Design */
